@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pooja Samagri - Braj Sanga</title>
+  <link rel="stylesheet" href="styles.css" />
+ 
+  <style>
+    body.with-bg {
+      background-image: url('background image.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    header, footer {
+      background-color: #f2c94c;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 10px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+    }
+    .product button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      background-color: #f2c94c;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body class="with-bg">
+  
+
+    <header style="background-color: #fff3cd; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f2c94c;">
+        <div class="logo" style="font-family: 'Brush Script MT', cursive; font-weight: bold; font-size: 28px; display: flex; align-items: center; gap: 8px; color: #a0522d;">
+          <img src="minilogo.png" alt="Logo" style="height: 32px; width: 32px;">
+          🛒 Pooja Sethu
+        </div>
+      
+        <nav>
+          <ul style="list-style: none; display: flex; gap: 15px; margin: 0; padding: 0;">
+            <li>
+              <a href="index.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Home
+              </a>
+            </li>
+            <li>
+              <a href="bookings.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Book Pandits
+              </a>
+            </li>
+            <li>
+              <a href="samagri.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Samagri
+              </a>
+            </li>
+            <li>
+              <a href="contact.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Contact
+              </a>
+            </li>
+            <li>
+              <a href="success.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Checkout
+              </a>
+            </li>
+          </ul>
+        </nav>
+      
+        <style>
+          nav a:hover {
+            background-color: #ffd54f;
+            color: #333;
+          }
+        </style>
+        <style>
+            .products {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 20px;
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+          
+            .product {
+              border: 1px solid #ccc;
+              border-radius: 10px;
+              padding: 10px;
+              background-color: #fdfdfd;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              text-align: center;
+            }
+          
+            .product img {
+              width: 100%;
+              height: 150px;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+          
+            .product h4 {
+              margin: 10px 0 5px;
+            }
+          
+            .product p {
+              margin: 5px 0;
+            }
+          
+            .product button {
+              background-color: #ff6600;
+              color: white;
+              border: none;
+              padding: 8px 12px;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+          
+            .product button:hover {
+              background-color: #cc5200;
+            }
+          </style>
+          
+
+      </header>
+      
+  <div class="popup" id="popupMessage">Item added to cart!</div>
+
+   
+<div> 
+    <div style="text-align: center; margin: 10px;">
+        <label for="sortPrice" style="color: white;">Sort by Price:</label>
+        
+        <select id="sortPrice" onchange="sortProducts()" style="padding: 8px; border-radius: 5px;">
+          <option value="">-- Select --</option>
+          <option value="lowToHigh">Low to High</option>
+          <option value="highToLow">High to Low</option>
+        </select>
+      </div>
+      
+  <input type="text" id="productFilter" placeholder="Search products..." style="margin: 20px auto; display: block; padding: 10px; width: 80%; max-width: 400px; border-radius: 5px; border: 1px solid #ccc;"> </div>
+
+  <div class="products">
+   
+      
+    <div class="product">
+      <img src="Camphor.jpg" alt="Camphor">
+      <h4>Camphor</h4>
+      <p>₹50</p>
+      <button onclick="addToCart('Camphor', 50)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="ghee diya.jpg" alt="Ghee diya">
+      <h4>Gheediya</h4>
+      <p>₹40</p>
+      <button onclick="addToCart('Gheediya', 40)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="haldi.jpg" alt="Haldi">
+      <h4>Haldi</h4>
+      <p>₹30</p>
+      <button onclick="addToCart('Haldi', 30)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="Incense Sticks.jpg" alt="Incense Stick">
+      <h4>Incense Stick</h4>
+      <p>₹25</p>
+      <button onclick="addToCart('Incense Stick', 25)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="Kumkum.jpg" alt="Kumkum">
+      <h4>Kumkum</h4>
+      <p>₹20</p>
+      <button onclick="addToCart('Kumkum', 20)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="Chandan.jpg" alt="Chandan">
+      <h4>Chandan</h4>
+      <p>₹60</p>
+      <button onclick="addToCart('Chandan', 60)">Add to Cart</button>
+    </div>
+  
+    <div class="product">
+      <img src="roli.jpg" alt="Roli">
+      <h4>Roli</h4>
+      <p>₹35</p>
+      <button onclick="addToCart('Roli', 35)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="ganga jal.jpg" alt="water">
+        <h4>Ganga Jal</h4>
+        <p>₹90</p>
+        <button onclick="addToCart('ganga jal', 35)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="Rose Petals.jpg" alt="water">
+        <h4>Rose Petals</h4>
+        <p>₹70</p>
+        <button onclick="addToCart('Rose petal', 35)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="Jasmine Oil.jpg" alt="water">
+        <h4>Jasmine Oil</h4>
+        <p>₹110</p>
+        <button onclick="addToCart('Roli', 35)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="Kamalgatta Mala.jpg" alt="Kamalgatta Mala">
+        <h4>Kamalgatta Mala</h4>
+        <p>₹150</p>
+        <button onclick="addToCart('Kamalgatta Mala', 150)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Pooja Mat.jpg" alt="Pooja Mat (Aasan)">
+        <h4>Pooja Mat (Aasan)</h4>
+        <p>₹120</p>
+        <button onclick="addToCart('Pooja Mat (Aasan)', 120)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Coconut Oil.jpg" alt="Coconut Oil">
+        <h4>Coconut Oil</h4>
+        <p>₹90</p>
+        <button onclick="addToCart('Coconut Oil', 90)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Chaurasi Samagri Pack.jpg" alt="Chaurasi (84) Samagri Pack">
+        <h4>Chaurasi (84) Samagri Pack</h4>
+        <p>₹500</p>
+        <button onclick="addToCart('Chaurasi (84) Samagri Pack', 500)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Havan Samagri.jpg" alt="Havan Samagri">
+        <h4>Havan Samagri</h4>
+        <p>₹75</p>
+        <button onclick="addToCart('Havan Samagri', 75)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Shubh Labh Sticker.jpg" alt="Shubh Labh Sticker">
+        <h4>Shubh Labh Sticker</h4>
+        <p>₹30</p>
+        <button onclick="addToCart('Shubh Labh Sticker', 30)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Om Symbol Sticker.jpg" alt="Om Symbol Sticker">
+        <h4>Om Symbol Sticker</h4>
+        <p>₹25</p>
+        <button onclick="addToCart('Om Symbol Sticker', 25)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Diya Stand.jpg" alt="Diya Stand">
+        <h4>Diya Stand</h4>
+        <p>₹100</p>
+        <button onclick="addToCart('Diya Stand', 100)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Brass Urli.jpg" alt="Brass Urli">
+        <h4>Brass Urli</h4>
+        <p>₹550</p>
+        <button onclick="addToCart('Brass Urli', 550)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Lakshmi Idol.jpg" alt="Lakshmi Idol">
+        <h4>Lakshmi Idol</h4>
+        <p>₹200</p>
+        <button onclick="addToCart('Lakshmi Idol', 200)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Ganesh Idol.jpg" alt="Ganesh Idol">
+        <h4>Ganesh Idol</h4>
+        <p>₹200</p>
+        <button onclick="addToCart('Ganesh Idol', 200)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Brass Bell Pair.jpg" alt="Brass Bell Pair">
+        <h4>Brass Bell Pair</h4>
+        <p>₹180</p>
+        <button onclick="addToCart('Brass Bell Pair', 180)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Tulsi Mala.jpg" alt="Tulsi Mala">
+        <h4>Tulsi Mala</h4>
+        <p>₹70</p>
+        <button onclick="addToCart('Tulsi Mala', 70)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Raksha Sutra.jpg" alt="Raksha Sutra">
+        <h4>Raksha Sutra</h4>
+        <p>₹20</p>
+        <button onclick="addToCart('Raksha Sutra', 20)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Pooja Dhoop.jpg" alt="Pooja Dhoop">
+        <h4>Pooja Dhoop</h4>
+        <p>₹40</p>
+        <button onclick="addToCart('Pooja Dhoop', 40)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Gomay Deepak.jpg" alt="Gomay Deepak">
+        <h4>Gomay Deepak</h4>
+        <p>₹60</p>
+        <button onclick="addToCart('Gomay Deepak', 60)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Lotus Seeds.jpg" alt="Lotus Seeds (Makhana)">
+        <h4>Lotus Seeds (Makhana)</h4>
+        <p>₹85</p>
+        <button onclick="addToCart('Lotus Seeds (Makhana)', 85)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Cow Ghee.jpg" alt="Cow Ghee">
+        <h4>Cow Ghee</h4>
+        <p>₹150</p>
+        <button onclick="addToCart('Cow Ghee', 150)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Haldi Powder.jpg" alt="Haldi Powder">
+        <h4>Haldi Powder</h4>
+        <p>₹30</p>
+        <button onclick="addToCart('Haldi Powder', 30)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Kumkum Powder.jpg" alt="Kumkum Powder">
+        <h4>Kumkum Powder</h4>
+        <p>₹30</p>
+        <button onclick="addToCart('Kumkum Powder', 30)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Decorative Toran.jpg" alt="Decorative Toran">
+        <h4>Decorative Toran</h4>
+        <p>₹180</p>
+        <button onclick="addToCart('Decorative Toran', 180)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Chawal Box.jpg" alt="Chawal Box">
+        <h4>Chawal Box</h4>
+        <p>₹90</p>
+        <button onclick="addToCart('Chawal Box', 90)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Haldi Kumkum Box.jpg" alt="Haldi-Kumkum Box">
+        <h4>Haldi-Kumkum Box</h4>
+        <p>₹65</p>
+        <button onclick="addToCart('Haldi-Kumkum Box', 65)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Pooja Kalawa Roll.jpg" alt="Pooja Kalawa Roll">
+        <h4>Pooja Kalawa Roll</h4>
+        <p>₹40</p>
+        <button onclick="addToCart('Pooja Kalawa Roll', 40)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Holy Thread Spool.jpg" alt="Holy Thread Spool">
+        <h4>Holy Thread Spool</h4>
+        <p>₹50</p>
+        <button onclick="addToCart('Holy Thread Spool', 50)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Pooja Garland Artificial.jpg" alt="Pooja Garland Artificial">
+        <h4>Pooja Garland Artificial</h4>
+        <p>₹95</p>
+        <button onclick="addToCart('Pooja Garland Artificial', 95)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Aarti Book.jpg" alt="Aarti Book">
+        <h4>Aarti Book</h4>
+        <p>₹25</p>
+        <button onclick="addToCart('Aarti Book', 25)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Mala Bag.jpg" alt="Mala Bag">
+        <h4>Mala Bag</h4>
+        <p>₹45</p>
+        <button onclick="addToCart('Mala Bag', 45)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Agarbatti Box.jpg" alt="Agarbatti Box">
+        <h4>Agarbatti Box</h4>
+        <p>₹35</p>
+        <button onclick="addToCart('Agarbatti Box', 35)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Dhoop Dani.jpg" alt="Dhoop Dani">
+        <h4>Dhoop Dani</h4>
+        <p>₹85</p>
+        <button onclick="addToCart('Dhoop Dani', 85)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Roli Chawal Pack.jpg" alt="Roli-Chawal Pack">
+        <h4>Roli-Chawal Pack</h4>
+        <p>₹35</p>
+        <button onclick="addToCart('Roli-Chawal Pack', 35)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Navratri Kit.jpg" alt="Navratri Kit">
+        <h4>Navratri Kit</h4>
+        <p>₹350</p>
+        <button onclick="addToCart('Navratri Kit', 350)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Diwali Pooja Kit.jpg" alt="Diwali Pooja Kit">
+        <h4>Diwali Pooja Kit</h4>
+        <p>₹400</p>
+        <button onclick="addToCart('Diwali Pooja Kit', 400)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Raksha Bandhan Thali.jpg" alt="Raksha Bandhan Thali">
+        <h4>Raksha Bandhan Thali</h4>
+        <p>₹130</p>
+        <button onclick="addToCart('Raksha Bandhan Thali', 130)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Bhog Plate.jpg" alt="Bhog Plate">
+        <h4>Bhog Plate</h4>
+        <p>₹95</p>
+        <button onclick="addToCart('Bhog Plate', 95)">Add to Cart</button>
+    </div>
+    
+    <div class="product">
+        <img src="Mandir Ghanti.jpg" alt="Mandir Ghanti">
+        <h4>Mandir Ghanti</h4>
+        <p>₹160</p>
+        <button onclick="addToCart('Mandir Ghanti', 160)">Add to Cart</button>
+    </div>
+    
+  </div>
+  
+     
+       
+<script>
+  document.getElementById('productFilter').addEventListener('input', function () {
+    const filterValue = this.value.toLowerCase();
+    const products = document.querySelectorAll('.product');
+    products.forEach(product => {
+      const name = product.querySelector('h4').textContent.toLowerCase();
+      product.style.display = name.includes(filterValue) ? 'block' : 'none';
+    });
+  });
+</script>
+
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <a href="cart.html" style="padding: 10px 20px; background-color: #f2c94c; border-radius: 5px; text-decoration: none; color: black; font-weight: bold;">Go to Cart</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Braj Sanga. All rights reserved.
+  </footer>
+
+  <script>
+    function addToCart(item, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ item, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      const popup = document.getElementById('popupMessage');
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+  <script>
+    function sortProducts() {
+      const sortValue = document.getElementById("sortPrice").value;
+      const productsContainer = document.querySelector(".products");
+      const productCards = Array.from(productsContainer.getElementsByClassName("product"));
+  
+      const sortedCards = productCards.sort((a, b) => {
+        const priceA = parseInt(a.querySelector("p").textContent.replace("₹", "").trim());
+        const priceB = parseInt(b.querySelector("p").textContent.replace("₹", "").trim());
+  
+        return sortValue === "lowToHigh" ? priceA - priceB : priceB - priceA;
+      });
+  
+      // Re-append sorted cards
+      productsContainer.innerHTML = "";
+      sortedCards.forEach(card => productsContainer.appendChild(card));
+    }
+  </script>
+  
+</body>
+</html>

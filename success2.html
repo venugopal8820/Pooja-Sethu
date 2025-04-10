@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Success - Braj Sanga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+  body.with-bg {
+  background-image: url('background image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+    header {
+      background-color: #fff3cd;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #f2c94c;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 14px;
+      color: black;
+      background-color: #ffecb3;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ffd54f;
+      color: #333;
+    }
+
+    #output {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      margin: 30px auto 20px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    #map {
+      height: 400px;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body class="with-bg">
+  <header>
+    <div class="logo" style="font-family: 'Brush Script MT', cursive; font-weight: bold; font-size: 28px; display: flex; align-items: center; gap: 8px; color: #a0522d;">
+      <img src="minilogo.png" alt="Logo" style="height: 32px; width: 32px;">
+      🛒 Pooja Sethu
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bookings.html">Book Pandits</a></li>
+        <li><a href="samagri.html">Samagri</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="success.html">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Booking Output -->
+  <div id="output"></div>
+
+  <!-- Map Display -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    window.onload = function () {
+      const booking = JSON.parse(localStorage.getItem('bookingDetails'));
+      if (booking) {
+        document.getElementById('output').innerHTML = `
+          <h2>Your request for GURU is successful!</h2>
+          <p><strong>Your Name:</strong> ${booking.name}</p>
+          <p><strong>Phone Number:</strong> ${booking.phone}</p>
+          <p><strong>Event Date:</strong> ${booking.eventDate}</p>
+          <p><strong>Number of Pandits:</strong> ${booking.pandits}</p>
+          <p><strong>Pooja Type:</strong> ${booking.pooja}</p>
+          <p><strong>Here is their live location 📍</strong></p>
+        `;
+
+        // Example: Medchal location
+        const lat = 17.6311;
+        const lng = 78.4850;
+
+        const map = L.map('map').setView([lat, lng], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker([lat, lng]).addTo(map)
+          .bindPopup("Pandit's Current Location")
+          .openPopup();
+      }
+    };
+  </script>
+</body>
+</html>

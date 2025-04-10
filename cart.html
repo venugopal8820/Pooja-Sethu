@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - Pooja Sethu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <body class="with-bg"></body>
+  <style>
+    
+    body.with-bg {
+      background-image: url('background image.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    header, footer {
+      background-color: #f2c94c;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 10px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .cart-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .cart-item button {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .cart-summary {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .upi-section {
+      margin-top: 20px;
+    }
+    .upi-section input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .upi-section button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="with-bg">
+    <header style="background-color: #fff3cd; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f2c94c;">
+        <div class="logo" style="font-family: 'Brush Script MT', cursive; font-weight: bold; font-size: 28px; display: flex; align-items: center; gap: 8px; color: #a0522d;">
+          <img src="minilogo.png" alt="Logo" style="height: 32px; width: 32px;">
+          🛒 Pooja Sethu
+        </div>
+      
+        <nav>
+          <ul style="list-style: none; display: flex; gap: 15px; margin: 0; padding: 0;">
+            <li>
+              <a href="index.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Home
+              </a>
+            </li>
+            <li>
+              <a href="bookings.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Book Pandits
+              </a>
+            </li>
+            <li>
+              <a href="samagri.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Products
+              </a>
+            </li>
+            <li>
+              <a href="contact.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Contact
+              </a>
+            </li>
+            <li>
+              <a href="success.html" 
+                 style="text-decoration: none;
+                        padding: 10px 20px;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: black;
+                        background-color: #ffecb3;
+                        border-radius: 8px;
+                        transition: background-color 0.3s, color 0.3s;">
+                 Checkout
+              </a>
+            </li>
+          </ul>
+        </nav>
+      
+        <style>
+          nav a:hover {
+            background-color: #ffd54f;
+            color: #333;
+          }
+        </style>
+      </header>
+      
+      
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="cart-summary">
+      <strong>Total: ₹<span id="totalAmount">0</span></strong>
+    </div>
+
+    <div class="upi-section">
+      <h3>Enter UPI ID</h3>
+      <input type="text" id="upiInput" placeholder="example@upi dss" required />
+      <button onclick="placeOrder()">Place Order</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Braj Sanga. All rights reserved.
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cartItems');
+    const totalAmountEl = document.getElementById('totalAmount');
+
+    function renderCart() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+          <span>${item.item} - ₹${item.price}</span>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+        cartItemsContainer.appendChild(itemEl);
+        total += item.price;
+      });
+      totalAmountEl.textContent = total;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function placeOrder() {
+      const upi = document.getElementById('upiInput').value.trim();
+      if (!upi) {
+        alert('Please enter a valid UPI ID');
+        return;
+      }
+      const orderDetails = {
+        cart,
+        total: totalAmountEl.textContent,
+        upi,
+        orderId: 'ORD' + Math.floor(Math.random() * 1000000)
+      };
+      localStorage.setItem('lastOrder', JSON.stringify(orderDetails));
+      localStorage.removeItem('cart');
+      alert('🙏 Thank you for booking Samagri from Pooja Sethu Store!');
+      window.location.href = 'success.html';
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

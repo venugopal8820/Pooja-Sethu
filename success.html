@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Success - Braj Sanga</title>
+  <body class="with-bg"></body>
+  <style>
+    body {
+      background-image: url('background image.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    header, footer {
+      background-color: #f2c94c;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 10px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .success-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 10px;
+    }
+    .success-container h2 {
+      color: green;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>✅ Order Success - Pooja Sethu</header>
+  <header style="background-color: #fff3cd; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f2c94c;">
+    <div class="logo" style="font-size: 24px; font-weight: bold; color: #a0522d;">🛒 Pooja Sethu Cart</div>
+    
+    <nav>
+      <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+        <li><a href="index.html" style="text-decoration: none; color: #5c4033; font-weight: 600;">Home</a></li>
+        <li><a href="bookings.html" style="text-decoration: none; color: #5c4033; font-weight: 600;">Book Pandits</a></li>
+        <li><a href="samagri.html" style="text-decoration: none; color: #5c4033; font-weight: 600;">Products</a></li>
+        <li><a href="contact.html" style="text-decoration: none; color: #5c4033; font-weight: 600;">Contact</a></li>
+        <li><a href="success.html" style="text-decoration: none; color: #5c4033; font-weight: 600;">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="success-container">
+    <h2>🎉 Thank you for your order!</h2>
+    <p>Your order has been placed successfully. Here are your order details:</p>
+    <div id="orderDetails"></div>
+  </div>
+
+  <footer>
+    &copy; 2025 Braj Sanga. All rights reserved.
+  </footer>
+
+  <script>
+    const order = JSON.parse(localStorage.getItem('lastOrder'));
+    const container = document.getElementById('orderDetails');
+
+    if (order) {
+      let itemsHtml = order.cart.map(item => `<li>${item.item} - ₹${item.price}</li>`).join('');
+      container.innerHTML = `
+        <p><strong>Order ID:</strong> ${order.orderId}</p>
+        <p><strong>UPI ID:</strong> ${order.upi}</p>
+        <p><strong>Total Amount:</strong> ₹${order.total}</p>
+        <p><strong>Items:</strong></p>
+        <ul>${itemsHtml}</ul>
+      `;
+    } else {
+      container.innerHTML = '<p>No order found.</p>';
+    }
+  </script>
+</body>
+</html>
